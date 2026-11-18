@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Arnx Labs | BMW Automotive Showcase</title>
+  <meta name="description" content="Learn about Arnx Labs, created by Arnav Srivastava to celebrate BMW engineering, motorsport history, and web innovation.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="m-stripe">
+    <span class="stripe-light-blue"></span>
+    <span class="stripe-dark-blue"></span>
+    <span class="stripe-red"></span>
+  </div>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">ARNX <span>LABS</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="models.html">Models & Compare</a>
+      <a href="engineering.html">Engineering</a>
+      <a href="about.html" class="active">About</a>
+    </nav>
+  </header>
+
+  <section class="page-banner">
+    <p class="tagline">ABOUT THE PROJECT</p>
+    <h1>Built for Enthusiasts</h1>
+    <p>Where clean frontend web engineering meets Bavarian automotive passion.</p>
+  </section>
+
+  <section class="container about-grid">
+    <div class="pillar-card">
+      <h3>Why Arnx Labs?</h3>
+      <p>
+        Arnx Labs was created by <strong>Arnav Srivastava</strong> as a fast, distraction-free digital hub dedicated to BMW's greatest machines — from homologation motorsport legends like the E46 M3 GTR to modern twin-turbo icons and electric flagships.
+      </p>
+    </div>
+
+    <div class="pillar-card">
+      <h3>Suggest a BMW Model</h3>
+      <p>Want a specific chassis (like the E30 M3, M2 CS, or XM Label) added to the spec lab? Send a quick note below:</p>
+      <form id="feedbackForm" class="feedback-form">
+        <input type="text" id="modelSuggestion" placeholder="Enter BMW Model (e.g., BMW M2 G87)" required>
+        <button type="submit" class="btn-primary">Submit Suggestion</button>
+        <p id="formStatus" class="form-status"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <div class="logo">ARNX <span>LABS</span></div>
+        <p>Curated automotive showcase built by Arnav Srivastava.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="models.html">Models</a>
+        <a href="engineering.html">Engineering</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
