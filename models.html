@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMW Models & Spec Comparison | Arnx Labs</title>
+  <meta name="description" content="Explore, filter, and compare BMW M-Series, electric i-Series, and classic legends side-by-side at Arnx Labs.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="m-stripe">
+    <span class="stripe-light-blue"></span>
+    <span class="stripe-dark-blue"></span>
+    <span class="stripe-red"></span>
+  </div>
+
+  <header class="navbar">
+    <a href="index.html" class="logo">ARNX <span>LABS</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="models.html" class="active">Models & Compare</a>
+      <a href="engineering.html">Engineering</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="page-banner">
+    <p class="tagline">THE GARAGE</p>
+    <h1>BMW Lineup & Spec Lab</h1>
+    <p>Filter by division, search models, or compare two machines head-to-head.</p>
+  </section>
+
+  <!-- Search & Filter Controls -->
+  <section class="container">
+    <div class="controls-bar">
+      <input type="text" id="searchInput" class="search-box" placeholder="Search model (e.g., M4, M5, i4, E46)...">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="m-series">M-Series</button>
+        <button class="filter-btn" data-filter="electric">Electric / Hybrid</button>
+        <button class="filter-btn" data-filter="classic">Legends</button>
+      </div>
+    </div>
+
+    <div class="car-grid" id="carGrid"></div>
+  </section>
+
+  <!-- Head-to-Head Comparison Tool -->
+  <section class="engineering-section">
+    <div class="container">
+      <h2>Head-to-Head Spec Comparator</h2>
+      <p class="sub-text">Select any two BMW models to compare horsepower, acceleration, and drivetrain side-by-side.</p>
+      
+      <div class="compare-selectors">
+        <select id="carSelect1" class="car-select"></select>
+        <span class="vs-badge">VS</span>
+        <select id="carSelect2" class="car-select"></select>
+      </div>
+
+      <div class="compare-table-wrapper">
+        <table class="compare-table" id="compareTable">
+          <!-- Populated dynamically by script.js -->
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-content">
+      <div>
+        <div class="logo">ARNX <span>LABS</span></div>
+        <p>Curated automotive showcase built by Arnav Srivastava.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="engineering.html">Engineering</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Spec Modal -->
+  <div id="specModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn">&times;</span>
+      <span id="modalCategory" class="badge"></span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDesc"></p>
+      <div class="specs-table" id="modalSpecs"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
