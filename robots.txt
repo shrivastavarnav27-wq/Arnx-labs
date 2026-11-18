@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shrivastavarnav27-wq.github.io/Arnx-labs/sitemap.xml
