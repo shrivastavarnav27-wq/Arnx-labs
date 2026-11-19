@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Garage | Arnx Labs</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Load Google Model Viewer -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+  <style>
+    .garage-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .viewer-stage {
+      width: 100%;
+      height: 550px;
+      background: radial-gradient(circle at center, #1e2530 0%, #0b0e14 100%);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+      position: relative;
+    }
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+    }
+    .garage-controls {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .car-btn {
+      padding: 0.75rem 1.5rem;
+      background: #141923;
+      color: #fff;
+      border: 1px solid #2b3548;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .car-btn.active, .car-btn:hover {
+      background: #0066b1;
+      border-color: #3399ff;
+    }
+    .specs-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .spec-box {
+      background: #12161f;
+      padding: 1.2rem;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+  </style>
+</head>
+<body>
+  <!-- Paste your existing navbar here and add Garage link -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="models.html">Models</a>
+    <a href="engineering.html">Engineering</a>
+    <a href="garage.html" class="active">3D Garage</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main class="garage-container reveal">
+    <h1>Arnx Labs — Interactive 3D Garage</h1>
+    <p>Drag to rotate 360°, scroll to zoom, and switch between M-Series & Electric icons.</p>
+
+    <div class="viewer-stage">
+      <model-viewer
+        id="bmw-viewer"
+        src="assets/models/bmw-m4.glb"
+        alt="BMW 3D Model"
+        auto-rotate
+        camera-controls
+        shadow-intensity="1.2"
+        environment-image="neutral"
+        exposure="1.1"
+        camera-orbit="45deg 75deg 105%">
+      </model-viewer>
+    </div>
+
+    <div class="garage-controls">
+      <button class="car-btn active" onclick="switchCar('m4', this)">BMW M4 Competition</button>
+      <button class="car-btn" onclick="switchCar('i8', this)">BMW i8 Roadster</button>
+      <button class="car-btn" onclick="switchCar('e30', this)">BMW M3 E30</button>
+    </div>
+
+    <div class="specs-bar reveal" id="garage-specs">
+      <div class="spec-box"><h3>503 HP</h3><p>Twin-Turbo Inline-6</p></div>
+      <div class="spec-box"><h3>3.8 sec</h3><p>0–60 mph</p></div>
+      <div class="spec-box"><h3>180 mph</h3><p>Top Speed</p></div>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    const garageData = {
+      m4: {
+        file: "assets/models/bmw-m4.glb",
+        specs: [
+          { val: "503 HP", label: "Twin-Turbo Inline-6" },
+          { val: "3.8 sec", label: "0–60 mph" },
+          { val: "180 mph", label: "Top Speed" }
+        ]
+      },
+      i8: {
+        file: "assets/models/bmw-i8.glb",
+        specs: [
+          { val: "369 HP", label: "Plug-in Hybrid" },
+          { val: "4.2 sec", label: "0–60 mph" },
+          { val: "155 mph", label: "Top Speed" }
+        ]
+      },
+      e30: {
+        file: "assets/models/bmw-e30.glb",
+        specs: [
+          { val: "235 HP", label: "S14 Inline-4" },
+          { val: "6.5 sec", label: "0–60 mph" },
+          { val: "146 mph", label: "Top Speed" }
+        ]
+      }
+    };
+
+    function switchCar(key, btn) {
+      const viewer = document.getElementById("bmw-viewer");
+      const specsContainer = document.getElementById("garage-specs");
+      const data = garageData[key];
+
+      document.querySelectorAll(".car-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      viewer.src = data.file;
+      specsContainer.innerHTML = data.specs
+        .map(s => `<div class="spec-box"><h3>${s.val}</h3><p>${s.label}</p></div>`)
+        .join("");
+    }
+  </script>
+</body>
+</html>
